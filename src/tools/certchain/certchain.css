@@ -1,0 +1,116 @@
+/* ============================================================
+   Certificate Chain Builder — Additional Styles
+   ============================================================ */
+
+.chain-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.chain-slot {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.chain-slot:focus-within {
+  border-color: var(--accent);
+}
+
+.chain-slot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.875rem;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+}
+
+.chain-slot-num {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-secondary);
+}
+
+.chain-slot-btns {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.chain-slot .pki-textarea {
+  border-radius: 0;
+}
+
+.chain-slot-info {
+  padding: 0 0.25rem;
+}
+
+.chain-cert-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.8rem;
+}
+
+.info-valid   { background: var(--success-bg); color: var(--text-primary); }
+.info-expired { background: var(--error-bg);   color: var(--text-primary); }
+.info-error   { background: var(--warning-bg); color: var(--warning); padding: 0.5rem 0.875rem; }
+
+/* Top actions bar */
+.chain-actions-top {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Summary table */
+.chain-summary {
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+}
+
+.chain-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.825rem;
+}
+
+.chain-table th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.chain-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chain-table tr:last-child td {
+  border-bottom: none;
+}
+
+.chain-table tr:hover td {
+  background: var(--bg-raised);
+}

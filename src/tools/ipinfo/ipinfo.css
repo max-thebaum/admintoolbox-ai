@@ -1,0 +1,133 @@
+/* ============================================================
+   IP-Info Styles
+   ============================================================ */
+
+.ipinfo-search {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.ipinfo-search .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.ipinfo-own-btn {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.ipinfo-error {
+  color: var(--error);
+  background: var(--error-bg);
+  border: 1px solid rgba(248, 81, 73, 0.3);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Result card */
+.ipinfo-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+.ipinfo-ip-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+}
+
+.ipinfo-ip-main {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-right: 0.25rem;
+}
+
+/* Tags */
+.ipinfo-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.tag-warn {
+  background: var(--warning-bg);
+  color: var(--warning);
+  border-color: rgba(210, 153, 34, 0.3);
+}
+
+.tag-info {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-color: var(--accent-glow);
+}
+
+/* Info table */
+.ipinfo-table {
+  padding: 0.5rem 0;
+}
+
+.ipinfo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.45rem 1.25rem;
+  transition: background 0.1s;
+}
+
+.ipinfo-row:hover {
+  background: var(--bg-raised);
+}
+
+.ipinfo-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.ipinfo-value {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.ipinfo-value.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+}
+
+/* Map link */
+.ipinfo-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+  border-top: 1px solid var(--border-subtle);
+  text-decoration: none;
+  transition: color 0.12s, background 0.12s;
+  width: 100%;
+}
+
+.ipinfo-map-link:hover {
+  background: var(--accent-dim);
+  color: var(--accent-hover);
+}

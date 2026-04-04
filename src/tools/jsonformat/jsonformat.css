@@ -1,0 +1,13 @@
+.jf-textarea {
+  min-height: 200px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  resize: vertical;
+}
+
+.jf-valid-msg {
+  font-size: 13px;
+  color: var(--success, #3fb950);
+  min-height: 18px;
+  margin-top: 4px;
+}

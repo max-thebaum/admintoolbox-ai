@@ -1,0 +1,146 @@
+/* ---- Binary Visualization ---- */
+
+.bin-container {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.bin-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: max-content;
+}
+
+.bin-row + .bin-row {
+  margin-top: 12px;
+}
+
+.bin-row-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 44px;
+  flex-shrink: 0;
+}
+
+.bin-octets {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bin-octet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.bin-dec {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  min-width: 72px;
+  text-align: center;
+}
+
+.bin-bits {
+  display: flex;
+  gap: 2px;
+}
+
+.bin-bit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.bin-bit.net {
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.bin-bit.host {
+  color: var(--text-muted);
+  background: var(--border-subtle);
+}
+
+.bin-dot {
+  font-size: 16px;
+  color: var(--text-muted);
+  align-self: flex-end;
+  padding-bottom: 2px;
+}
+
+.bin-spacer {
+  height: 8px;
+}
+
+.bin-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.bin-legend-item {
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bin-legend-item::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.bin-legend-item.net {
+  color: var(--accent);
+}
+
+.bin-legend-item.net::before {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+}
+
+.bin-legend-item.host {
+  color: var(--text-muted);
+}
+
+.bin-legend-item.host::before {
+  background: var(--border-subtle);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  .bin-bit {
+    width: 16px;
+    height: 20px;
+    font-size: 11px;
+  }
+
+  .bin-dec {
+    font-size: 11px;
+    min-width: 64px;
+  }
+}

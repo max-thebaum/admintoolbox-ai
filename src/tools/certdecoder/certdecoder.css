@@ -1,0 +1,23 @@
+.cd-textarea {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  min-height: 140px;
+  resize: vertical;
+}
+
+.cd-sans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.cd-san-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 3px 10px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent-glow);
+  border-radius: 20px;
+}

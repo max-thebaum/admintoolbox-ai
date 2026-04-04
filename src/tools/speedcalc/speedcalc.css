@@ -1,0 +1,12 @@
+/* ---- Speed Calculator ---- */
+
+.result-row--highlight {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+@media (max-width: 600px) {
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}

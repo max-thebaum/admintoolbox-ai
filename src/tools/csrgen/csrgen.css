@@ -1,0 +1,302 @@
+/* ============================================================
+   PKI Tools — Shared Styles (CSR, CertGen, CertChain)
+   ============================================================ */
+
+/* Form layout */
+.pki-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.pki-fieldset {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem 1.25rem;
+  margin: 0;
+}
+
+.pki-legend {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-secondary);
+  padding: 0 0.4rem;
+}
+
+.pki-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem 1rem;
+  margin-top: 0.875rem;
+}
+
+.pki-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pki-field label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.pki-field-wide {
+  grid-column: 1 / -1;
+}
+
+.required {
+  color: var(--error);
+}
+
+/* Key row */
+.pki-keyrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-top: 0.875rem;
+}
+
+.pki-keyrow .pki-field {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* Segmented control */
+.pki-segmented {
+  display: flex;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.pki-seg {
+  flex: 1;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.pki-seg.active {
+  background: var(--bg-surface);
+  color: var(--accent);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.pki-seg:hover:not(.active) {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+/* Options row */
+.pki-options-row {
+  margin-top: 0.875rem;
+}
+
+.pki-check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.pki-check-label input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/* SAN section */
+.pki-san-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .pki-san-section { grid-template-columns: 1fr; }
+}
+
+.pki-san-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pki-san-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.pki-san-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pki-san-input-row .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.pki-san-add {
+  white-space: nowrap;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.75rem;
+}
+
+.pki-san-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pki-san-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 0.6rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+
+.pki-san-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 0.2rem;
+  transition: color 0.12s;
+  font-family: inherit;
+}
+
+.pki-san-remove:hover {
+  color: var(--error);
+}
+
+/* Error */
+.pki-error {
+  color: var(--error);
+  background: var(--error-bg);
+  border: 1px solid rgba(248, 81, 73, 0.3);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Generate button */
+.pki-generate-btn {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Spinner row */
+.pki-spinner-row {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* Output blocks */
+.pki-output-block {
+  margin-bottom: 1.25rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pki-output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pki-output-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pki-output-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.pki-textarea {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: none;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.pki-textarea:focus {
+  outline: none;
+}
+
+/* Cert info table (reuses ipinfo-row styles) */
+.pki-cert-info {
+  padding: 0.25rem 0;
+}
+
+/* Chain tool badge */
+.chain-cert-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+.badge-ok  { background: var(--success-bg); color: var(--success); }
+.badge-exp { background: var(--error-bg);   color: var(--error); }

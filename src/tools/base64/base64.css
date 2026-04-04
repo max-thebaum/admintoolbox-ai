@@ -1,0 +1,7 @@
+.b64-textarea {
+  min-height: 140px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  resize: vertical;
+  word-break: break-all;
+}

@@ -1,0 +1,127 @@
+/* ---- DNS Lookup ---- */
+
+.dns-input-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.dns-lookup-btn-wrap {
+  flex-shrink: 0;
+}
+
+.dns-lookup-btn-wrap .btn {
+  height: 40px;
+}
+
+.dns-type-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.dns-filter-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.dns-type-btn {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-secondary);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+}
+
+.dns-type-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.dns-type-btn.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.dns-summary {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dns-summary strong {
+  color: var(--text-primary);
+}
+
+.dns-errors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dns-error-badge {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--warning);
+  background: var(--warning-bg);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.dns-section {
+  margin-bottom: 20px;
+}
+
+.dns-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.dns-section-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.dns-record-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.dns-table td.dns-data {
+  word-break: break-all;
+  max-width: 400px;
+  color: var(--accent);
+}
+
+.dns-no-results {
+  text-align: center;
+  padding: 32px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+  .dns-input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dns-table td.dns-data {
+    max-width: 180px;
+  }
+}

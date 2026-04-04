@@ -1,0 +1,32 @@
+.pc-result-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 16px 20px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  max-width: 420px;
+  transition: border-color 0.2s;
+}
+
+.pc-status-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.pc-status-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.pc-status-detail {
+  font-size: 13px;
+  color: var(--text-muted);
+}

@@ -1,0 +1,131 @@
+/* Port-Referenz */
+.portref-controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.portref-search {
+  flex: 1;
+  min-width: 200px;
+}
+
+.portref-filter {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.portref-filter-btn {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+.portref-filter-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.portref-filter-btn:hover:not(.active) {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.portref-count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.portref-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.portref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.portref-table th {
+  text-align: left;
+  padding: 0.5rem 0.875rem;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.portref-table td {
+  padding: 0.45rem 0.875rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.portref-table tr:last-child td { border-bottom: none; }
+
+.portref-table tr:hover td {
+  background: var(--bg-raised);
+  color: var(--text-primary);
+}
+
+.portref-port {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+  width: 60px;
+}
+
+.portref-service {
+  font-weight: 600;
+  color: var(--text-primary) !important;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+.portref-desc {
+  color: var(--text-secondary);
+}
+
+.portref-proto {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.portref-proto-TCP        { background: rgba(91,141,239,0.12); color: var(--accent); border-color: rgba(91,141,239,0.25); }
+.portref-proto-UDP        { background: var(--success-bg);     color: var(--success); border-color: rgba(63,185,80,0.25); }
+.portref-proto-TCP-UDP,
+.portref-proto-TCPUDP     { background: var(--warning-bg);     color: var(--warning); border-color: rgba(210,153,34,0.25); }
+
+.portref-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
