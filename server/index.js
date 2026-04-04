@@ -34,6 +34,11 @@ app.use(cors({
       'http://localhost:4173',
       'http://127.0.0.1:5173'
     ]
+    if (process.env.APP_URL) {
+      const base = process.env.APP_URL.replace(/\/$/, '')
+      allowed.push(base)
+      allowed.push(base.replace('://', '://www.'))
+    }
     if (!origin || allowed.includes(origin)) return cb(null, true)
     cb(new Error('Not allowed by CORS'))
   },
