@@ -23,6 +23,10 @@ const DIST      = join(__dirname, '../dist')
 
 const app = express()
 
+// Trust the first proxy hop (Traefik / Coolify reverse proxy)
+// Required for express-rate-limit to read X-Forwarded-For correctly
+app.set('trust proxy', 1)
+
 // ---- Middleware ----
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: false, limit: '10mb' }))
