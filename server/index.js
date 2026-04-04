@@ -7,6 +7,7 @@ import { existsSync } from 'fs'
 
 // Initialize DB pool + run schema migrations
 import './lib/db.js'
+import { query } from './lib/db.js'
 import { ensureSchema } from './lib/schema.js'
 
 import authRouter       from './routes/auth.js'
@@ -16,6 +17,9 @@ import portcheckRouter    from './routes/portcheck.js'
 import dnspropRouter      from './routes/dnsprop.js'
 import scriptstoreRouter  from './routes/scriptstore.js'
 import speedtestRouter    from './routes/speedtest.js'
+import logRouter          from './routes/log.js'
+import adminStatsRouter   from './routes/adminStats.js'
+import { logRequest }     from './lib/logger.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const PORT      = process.env.PORT || 3001
@@ -62,6 +66,20 @@ app.use((req, res, next) => {
 // ---- Health check (used by Coolify) ----
 app.get('/api/health', (req, res) => res.json({ ok: true }))
 
+// ---- API request logging (skip health + log beacon itself) ----
+app.use('/api', (req, res, next) => {
+  const skip = ['/health', '/log/view']
+  if (skip.some(p => req.path.startsWith(p))) return next()
+  const t0 = Date.now()
+  res.on('finish', () => {
+    logRequest('api', req.path, {
+      ip: req.ip, method: req.method,
+      status: res.statusCode, duration_ms: Date.now() - t0
+    })
+  })
+  next()
+})
+
 // ---- API Routes ----
 app.use('/api/auth',       authRouter)
 app.use('/api/dns',        dnsRouter)
@@ -71,6 +89,8 @@ app.use('/api/dnsprop',     dnspropRouter)
 app.use('/api/scriptstore', scriptstoreRouter)
 app.use('/script',          scriptstoreRouter)   // serves GET /script/:token.sh
 app.use('/api/speedtest',   speedtestRouter)
+app.use('/api/log',         logRouter)
+app.use('/api/admin',       adminStatsRouter)
 
 // ---- Serve static dist in production ----
 if (existsSync(DIST)) {
@@ -97,6 +117,14 @@ ensureSchema()
     app.listen(PORT, () => {
       console.log(`[AdminToolbox API] läuft auf http://localhost:${PORT}`)
     })
+
+    // Daily cleanup: delete request_logs older than 5 days
+    const runCleanup = () =>
+      query(`DELETE FROM request_logs WHERE ts < NOW() - INTERVAL '5 days'`)
+        .then(r => { if (r.rowCount > 0) console.log(`[cron] ${r.rowCount} alte Log-Einträge gelöscht`) })
+        .catch(e => console.error('[cron] log cleanup:', e.message))
+    runCleanup()
+    setInterval(runCleanup, 24 * 60 * 60 * 1000)
   })
   .catch(err => {
     console.error('[startup] Schema-Migration fehlgeschlagen:', err.message)

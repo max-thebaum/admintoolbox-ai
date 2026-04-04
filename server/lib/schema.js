@@ -22,4 +22,21 @@ export async function ensureSchema() {
       value JSONB NOT NULL
     )
   `)
+
+  // Request logs (pageviews + API calls, retained 5 days)
+  await query(`
+    CREATE TABLE IF NOT EXISTS request_logs (
+      id          BIGSERIAL PRIMARY KEY,
+      ts          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      ip_anon     TEXT NOT NULL,
+      type        TEXT NOT NULL,
+      path        TEXT NOT NULL,
+      method      TEXT,
+      status      INT,
+      duration_ms INT
+    )
+  `)
+  await query(`
+    CREATE INDEX IF NOT EXISTS request_logs_ts_idx ON request_logs (ts DESC)
+  `)
 }

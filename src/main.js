@@ -121,6 +121,15 @@ renderNav()
 initLangSwitcher()
 applyStaticI18n()
 
+// Pageview beacon — fire-and-forget on every navigation
+window.addEventListener('at:navigate', e => {
+  fetch('/api/log/view', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify({ page: e.detail.hash })
+  }).catch(() => {})
+})
+
 // Re-apply static i18n and re-navigate on locale change
 window.addEventListener('at:locale-change', () => {
   applyStaticI18n()
