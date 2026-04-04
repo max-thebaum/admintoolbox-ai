@@ -68,7 +68,7 @@ app.get('/api/health', (req, res) => res.json({ ok: true }))
 
 // ---- API request logging (skip health + log beacon itself) ----
 app.use('/api', (req, res, next) => {
-  const skip = ['/health', '/log/view']
+  const skip = ['/health', '/log/view', '/admin']
   if (skip.some(p => req.path.startsWith(p))) return next()
   const t0 = Date.now()
   res.on('finish', () => {

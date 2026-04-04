@@ -43,6 +43,7 @@ router.get('/stats', requireAuth, async (_req, res) => {
         SELECT path, COUNT(*)::int AS count
         FROM request_logs
         WHERE type = 'pageview'
+          AND path != 'admin'
           AND ts >= NOW() - INTERVAL '7 days'
         GROUP BY path
         ORDER BY count DESC
