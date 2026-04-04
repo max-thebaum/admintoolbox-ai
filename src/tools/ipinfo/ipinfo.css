@@ -131,3 +131,43 @@
   background: var(--accent-dim);
   color: var(--accent-hover);
 }
+
+/* WHOIS accordion */
+.ipinfo-whois-details {
+  margin-top: 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ipinfo-whois-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-raised);
+  list-style: none;
+  user-select: none;
+}
+
+.ipinfo-whois-summary::-webkit-details-marker { display: none; }
+
+.ipinfo-whois-chevron {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.ipinfo-whois-details[open] .ipinfo-whois-chevron {
+  transform: rotate(90deg);
+}
+
+.ipinfo-whois-body {
+  padding: 10px 14px;
+  background: var(--bg-surface);
+}

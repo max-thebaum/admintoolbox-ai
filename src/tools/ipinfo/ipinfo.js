@@ -27,6 +27,18 @@ export function html() {
       <div id="ipinfo-error" class="ipinfo-error" hidden></div>
       <div id="ipinfo-spinner" class="spinner" hidden></div>
       <div id="ipinfo-result" hidden></div>
+
+      <details id="ipinfo-whois" class="ipinfo-whois-details" hidden>
+        <summary class="ipinfo-whois-summary">
+          WHOIS / RDAP
+          <span class="ipinfo-whois-chevron">▸</span>
+        </summary>
+        <div id="ipinfo-whois-body" class="ipinfo-whois-body">
+          <div class="spinner" id="ipinfo-whois-spinner" hidden></div>
+          <div id="ipinfo-whois-error" class="ipinfo-error" hidden></div>
+          <div id="ipinfo-whois-result"></div>
+        </div>
+      </details>
     </div>
   `
 }
@@ -38,6 +50,14 @@ export function init(container) {
   const spinner   = container.querySelector('#ipinfo-spinner')
   const errorEl   = container.querySelector('#ipinfo-error')
   const resultEl  = container.querySelector('#ipinfo-result')
+  const whoisDetails = container.querySelector('#ipinfo-whois')
+  const whoisBody    = container.querySelector('#ipinfo-whois-body')
+  const whoisSpinner = container.querySelector('#ipinfo-whois-spinner')
+  const whoisError   = container.querySelector('#ipinfo-whois-error')
+  const whoisResult  = container.querySelector('#ipinfo-whois-result')
+
+  let lastQuery = ''
+  let whoisLoaded = false
 
   const FIELDS = 'status,message,continent,continentCode,country,countryCode,regionName,city,zip,lat,lon,timezone,isp,org,as,asname,mobile,proxy,hosting,query'
 
@@ -78,6 +98,12 @@ export function init(container) {
         return
       }
 
+      lastQuery = d.query || target
+      whoisLoaded = false
+      whoisDetails.hidden = false
+      whoisDetails.open = false
+      whoisResult.innerHTML = ''
+      whoisError.hidden = true
       renderResult(d)
     } catch {
       showError('Abfrage fehlgeschlagen. Bitte Internetverbindung prüfen.')
@@ -148,6 +174,73 @@ export function init(container) {
       </div>
     `
   }
+
+  async function loadWhois(q) {
+    if (!q) return
+    whoisLoaded = true
+    whoisSpinner.hidden = false
+    whoisError.hidden = true
+    whoisResult.innerHTML = ''
+
+    try {
+      const res = await fetch(`/api/whois?q=${encodeURIComponent(q)}`)
+      const data = await res.json()
+      if (!res.ok) { whoisError.textContent = data.error || 'WHOIS nicht verfügbar.'; whoisError.hidden = false; return }
+      renderWhois(data)
+    } catch {
+      whoisError.textContent = 'WHOIS-Abfrage fehlgeschlagen.'
+      whoisError.hidden = false
+    } finally {
+      whoisSpinner.hidden = true
+    }
+  }
+
+  function whoisRow(label, val) {
+    if (!val) return ''
+    return `<div class="ipinfo-row"><span class="ipinfo-label">${label}</span><span class="ipinfo-value">${escapeHtml(String(val))}</span></div>`
+  }
+
+  function renderWhois(d) {
+    if (d.type === 'ip') {
+      whoisResult.innerHTML = `
+        <div class="ipinfo-table">
+          ${whoisRow('Handle',      d.handle)}
+          ${whoisRow('Netzname',    d.name)}
+          ${whoisRow('Organisation', d.org)}
+          ${whoisRow('Land',        d.country)}
+          ${whoisRow('CIDR / Range', d.cidr)}
+          ${whoisRow('Erstellt',    d.created)}
+          ${whoisRow('Aktualisiert', d.updated)}
+        </div>
+        ${d.rdapUrl ? `<a href="${escapeHtml(d.rdapUrl)}" target="_blank" rel="noopener noreferrer" class="ipinfo-map-link" style="margin-top:8px;display:inline-block">RDAP-Quelle ↗</a>` : ''}
+      `
+    } else {
+      const nsHtml = d.nameservers?.length
+        ? d.nameservers.map(ns => `<span class="ipinfo-tag tag-info">${escapeHtml(ns)}</span>`).join('')
+        : ''
+      const statusHtml = d.status?.length
+        ? d.status.map(s => `<span class="ipinfo-tag tag-info">${escapeHtml(s)}</span>`).join('')
+        : ''
+      whoisResult.innerHTML = `
+        <div class="ipinfo-table">
+          ${whoisRow('Domain',     d.name)}
+          ${whoisRow('Registrar',  d.registrar)}
+          ${whoisRow('Registrant', d.registrant)}
+          ${whoisRow('Erstellt',   d.created)}
+          ${whoisRow('Läuft ab',   d.expires)}
+          ${whoisRow('Aktualisiert', d.updated)}
+        </div>
+        ${nsHtml   ? `<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">${nsHtml}</div>`   : ''}
+        ${statusHtml ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px">${statusHtml}</div>` : ''}
+        ${d.rdapUrl ? `<a href="${escapeHtml(d.rdapUrl)}" target="_blank" rel="noopener noreferrer" class="ipinfo-map-link" style="margin-top:8px;display:inline-block">RDAP-Quelle ↗</a>` : ''}
+      `
+    }
+  }
+
+  // Lazy-load WHOIS when accordion is opened
+  whoisDetails.addEventListener('toggle', () => {
+    if (whoisDetails.open && !whoisLoaded) loadWhois(lastQuery)
+  })
 
   // Events
   queryBtn.addEventListener('click', () => lookup(input.value.trim()))

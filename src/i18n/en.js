@@ -64,6 +64,12 @@ export default {
   'tool.bashgen.desc':      'Generate a custom Ubuntu server setup script using a guided wizard',
   'tool.speedtest.label':   'Speed Test',
   'tool.speedtest.desc':    'Measure download, upload and latency to the server — with real-time graph and troubleshooting metrics',
+  'tool.traceroute.label':  'Traceroute',
+  'tool.traceroute.desc':   'Trace the route to a target host in real time — hops, latencies and timeouts live',
+  'tool.ssltls.label':      'SSL/TLS Checker',
+  'tool.ssltls.desc':       'Inspect a server\'s TLS certificate: validity, issuer, cipher, SANs and certificate chain',
+  'tool.jwtdecoder.label':  'JWT Decoder',
+  'tool.jwtdecoder.desc':   'Decode JSON Web Tokens — view header, payload and claims with human-readable timestamps',
 
   // Home page
   'home.title':           'AdminToolbox',

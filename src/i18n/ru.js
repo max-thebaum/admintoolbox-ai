@@ -64,6 +64,12 @@ export default {
   'tool.bashgen.desc':      'Создавать настраиваемый скрипт развёртывания Ubuntu-сервера через пошаговый мастер',
   'tool.speedtest.label':   'Тест скорости',
   'tool.speedtest.desc':    'Измерить скорость загрузки, отдачи и задержку до сервера — с графиком в реальном времени',
+  'tool.traceroute.label':  'Traceroute',
+  'tool.traceroute.desc':   'Отслеживать маршрут до целевого хоста в реальном времени — хопы, задержки и таймауты',
+  'tool.ssltls.label':      'SSL/TLS Checker',
+  'tool.ssltls.desc':       'Проверять TLS-сертификат сервера: срок действия, издатель, шифр, SAN и цепочка сертификатов',
+  'tool.jwtdecoder.label':  'JWT Decoder',
+  'tool.jwtdecoder.desc':   'Декодировать JSON Web Token — показывать заголовок, полезную нагрузку и claims с читаемыми датами',
 
   // Home page
   'home.title':           'AdminToolbox',

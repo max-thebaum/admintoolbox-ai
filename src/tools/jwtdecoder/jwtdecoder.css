@@ -1,0 +1,118 @@
+.jwt-input-wrap { margin-bottom: 12px; }
+
+.jwt-textarea {
+  width: 100%;
+  resize: vertical;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.jwt-input-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.jwt-error {
+  color: var(--error);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* Parts layout */
+.jwt-parts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.jwt-part {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.jwt-part-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.jwt-part-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.jwt-label-header  { background: rgba(88,166,255,0.15); color: var(--accent); }
+.jwt-label-payload { background: rgba(63,185,80,0.12);  color: var(--success); }
+.jwt-label-sig     { background: var(--bg-hover);       color: var(--text-muted); }
+
+.jwt-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-right: auto;
+}
+
+.jwt-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.jwt-badge--ok   { background: rgba(63,185,80,0.12);   color: var(--success); }
+.jwt-badge--err  { background: rgba(248,81,73,0.15);   color: var(--error); }
+.jwt-badge--info { background: var(--accent-dim);      color: var(--accent); }
+
+.jwt-copy-btn {
+  font-size: 11px;
+  padding: 2px 8px;
+  margin-left: auto;
+}
+
+/* JSON display */
+.jwt-json {
+  margin: 0;
+  padding: 12px 14px;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--text-primary);
+}
+
+/* Syntax colors */
+.jj-key  { color: var(--accent); }
+.jj-str  { color: var(--success); }
+.jj-num  { color: #e8912d; }
+.jj-bool { color: #e8912d; }
+.jj-null { color: var(--text-muted); }
+.jj-date { color: var(--text-muted); font-size: 11px; }
+
+/* Signature */
+.jwt-sig {
+  padding: 10px 14px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: var(--text-muted);
+  word-break: break-all;
+  line-height: 1.6;
+}
+
+.jwt-sig-note {
+  padding: 6px 14px 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  border-top: 1px solid var(--border-subtle);
+}

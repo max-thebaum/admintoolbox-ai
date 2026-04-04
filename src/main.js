@@ -78,6 +78,15 @@ import './tools/bashgen/bashgen.css'
 import * as speedtest   from './tools/speedtest/speedtest.js'
 import './tools/speedtest/speedtest.css'
 
+import * as traceroute  from './tools/traceroute/traceroute.js'
+import './tools/traceroute/traceroute.css'
+
+import * as ssltls      from './tools/ssltls/ssltls.js'
+import './tools/ssltls/ssltls.css'
+
+import * as jwtdecoder  from './tools/jwtdecoder/jwtdecoder.js'
+import './tools/jwtdecoder/jwtdecoder.css'
+
 // Pages
 import * as donate      from './pages/donate.js'
 import * as home        from './pages/home.js'
@@ -110,6 +119,9 @@ register('textdiff',    { html: textdiff.html,    init: textdiff.init })
 register('csvclean',    { html: csvclean.html,    init: csvclean.init })
 register('bashgen',     { html: bashgen.html,     init: bashgen.init })
 register('speedtest',   { html: speedtest.html,   init: speedtest.init })
+register('traceroute',  { html: traceroute.html,  init: traceroute.init })
+register('ssltls',      { html: ssltls.html,      init: ssltls.init })
+register('jwtdecoder',  { html: jwtdecoder.html,  init: jwtdecoder.init })
 register('donate',      { html: donate.html,      init: donate.init })
 register('admin',       { html: admin.html,       init: admin.init })
 register('impressum',   { html: impressum.html,   init: impressum.init })

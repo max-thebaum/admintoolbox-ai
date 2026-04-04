@@ -64,6 +64,12 @@ export default {
   'tool.bashgen.desc':      'Générer un script de configuration Ubuntu personnalisé via un assistant guidé',
   'tool.speedtest.label':   'Test de débit',
   'tool.speedtest.desc':    'Mesurer le téléchargement, l\'envoi et la latence vers le serveur — avec graphique en temps réel',
+  'tool.traceroute.label':  'Traceroute',
+  'tool.traceroute.desc':   'Suivre la route vers un hôte cible en temps réel — sauts, latences et timeouts en direct',
+  'tool.ssltls.label':      'Vérificateur SSL/TLS',
+  'tool.ssltls.desc':       'Inspecter le certificat TLS d\'un serveur : validité, émetteur, cipher, SANs et chaîne',
+  'tool.jwtdecoder.label':  'Décodeur JWT',
+  'tool.jwtdecoder.desc':   'Décoder les JSON Web Tokens — afficher l\'en-tête, la charge utile et les claims avec les dates lisibles',
 
   // Home page
   'home.title':           'AdminToolbox',
