@@ -82,6 +82,29 @@ function dashboardHtml() {
           </div>
         </div>
 
+        <!-- Spenden-Links verwalten -->
+        <div class="admin-section">
+          <div class="admin-section-header">
+            <h3 class="admin-section-title">Spenden-Links</h3>
+          </div>
+          <div class="form-row">
+            <label for="donate-paypal">PayPal URL</label>
+            <input id="donate-paypal" class="input" type="url" placeholder="https://paypal.me/...">
+          </div>
+          <div class="form-row" style="margin-top:10px">
+            <label for="donate-bitcoin">Bitcoin Wallet-Adresse</label>
+            <input id="donate-bitcoin" class="input" type="text" placeholder="bc1q... oder 1... oder 3...">
+          </div>
+          <div class="form-row" style="margin-top:10px">
+            <label for="donate-bmac">Buy Me a Coffee URL</label>
+            <input id="donate-bmac" class="input" type="url" placeholder="https://buymeacoffee.com/...">
+          </div>
+          <div id="admin-donate-err" class="input-error-msg"></div>
+          <div class="btn-row" style="margin-top:12px">
+            <button class="btn btn-primary" id="admin-donate-save-btn">Spenden-Links speichern</button>
+          </div>
+        </div>
+
       </div>
     </div>`
 }
@@ -263,5 +286,51 @@ function initDashboard(container) {
     initLogin(container)
   })
 
+  // ---- Donate settings ----
+  const donatePaypalEl = container.querySelector('#donate-paypal')
+  const donateBtcEl    = container.querySelector('#donate-bitcoin')
+  const donateBmacEl   = container.querySelector('#donate-bmac')
+  const donateErrEl    = container.querySelector('#admin-donate-err')
+  const donateSaveBtn  = container.querySelector('#admin-donate-save-btn')
+
+  async function loadDonateLinks() {
+    try {
+      const res  = await fetch('/api/settings/donate')
+      const data = await res.json()
+      donatePaypalEl.value = data.paypal  ?? ''
+      donateBtcEl.value    = data.bitcoin ?? ''
+      donateBmacEl.value   = data.bmac    ?? ''
+    } catch { /* leave empty */ }
+  }
+
+  donateSaveBtn.addEventListener('click', async () => {
+    donateErrEl.textContent  = ''
+    donateErrEl.style.color  = ''
+    donateSaveBtn.disabled   = true
+    donateSaveBtn.textContent = 'Speichere…'
+    try {
+      const res = await fetch('/api/settings/donate', {
+        method: 'PUT',
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          paypal:  donatePaypalEl.value.trim(),
+          bitcoin: donateBtcEl.value.trim(),
+          bmac:    donateBmacEl.value.trim()
+        })
+      })
+      const data = await res.json()
+      if (!res.ok) { donateErrEl.textContent = data.error || 'Fehler beim Speichern.'; return }
+      donateErrEl.style.color = 'var(--success, green)'
+      donateErrEl.textContent = 'Gespeichert!'
+      setTimeout(() => { donateErrEl.textContent = ''; donateErrEl.style.color = '' }, 2500)
+    } catch {
+      donateErrEl.textContent = 'Server nicht erreichbar.'
+    } finally {
+      donateSaveBtn.disabled    = false
+      donateSaveBtn.textContent = 'Spenden-Links speichern'
+    }
+  })
+
   loadNavConfig()
+  loadDonateLinks()
 }

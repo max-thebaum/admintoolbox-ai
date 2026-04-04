@@ -1,7 +1,37 @@
 // ============================================================
-// Spendenseite — i18n-aware
+// Spendenseite — lädt Links dynamisch aus den Admin-Einstellungen
 // ============================================================
 import { t } from '../i18n/index.js'
+
+function esc(s) {
+  return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
+const ICONS = {
+  paypal: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:var(--accent)">
+    <path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+  </svg>`,
+  bitcoin: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:var(--accent)">
+    <path d="M17.06 11.57c.59-.69.94-1.59.94-2.57 0-2.21-1.79-4-4-4V3h-2v2H10V3H8v2H5v2h2v10H5v2h3v2h2v-2h2v2h2v-2c2.21 0 4-1.79 4-4 0-1.11-.45-2.12-1.17-2.83zM9 7h5c1.1 0 2 .9 2 2s-.9 2-2 2H9V7zm6 10H9v-4h6c1.1 0 2 .9 2 2s-.9 2-2 2z"/>
+  </svg>`,
+  bmac: `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:var(--accent)">
+    <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/>
+  </svg>`
+}
+
+function card(id, icon, title, desc) {
+  return `
+    <div class="donate-card" id="donate-card-${id}">
+      <div class="donate-card-icon">${icon}</div>
+      <div class="donate-card-body">
+        <h3>${title}</h3>
+        <p class="donate-card-desc">${desc}</p>
+        <div class="donate-card-action" id="donate-action-${id}">
+          <span class="donate-badge">${t('donate.badge')}</span>
+        </div>
+      </div>
+    </div>`
+}
 
 function buildHtml() {
   return `
@@ -29,58 +59,52 @@ function buildHtml() {
         </div>
 
         <div class="donate-options">
-          <div class="donate-card donate-placeholder">
-            <div class="donate-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-              </svg>
-            </div>
-            <div>
-              <h3>${t('donate.paypal.title')}</h3>
-              <p>${t('donate.paypal.desc')}</p>
-              <span class="donate-badge">${t('donate.badge')}</span>
-            </div>
-          </div>
-
-          <div class="donate-card donate-placeholder">
-            <div class="donate-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/>
-              </svg>
-            </div>
-            <div>
-              <h3>${t('donate.iban.title')}</h3>
-              <p>${t('donate.iban.desc')}</p>
-              <span class="donate-badge">${t('donate.badge')}</span>
-            </div>
-          </div>
-
-          <div class="donate-card donate-placeholder">
-            <div class="donate-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-            </div>
-            <div>
-              <h3>${t('donate.github.title')}</h3>
-              <p>${t('donate.github.desc')}</p>
-              <span class="donate-badge">${t('donate.badge')}</span>
-            </div>
-          </div>
+          ${card('paypal',  ICONS.paypal,  t('donate.paypal.title'),  t('donate.paypal.desc'))}
+          ${card('bitcoin', ICONS.bitcoin, t('donate.bitcoin.title'), t('donate.bitcoin.desc'))}
+          ${card('bmac',    ICONS.bmac,    t('donate.bmac.title'),    t('donate.bmac.desc'))}
         </div>
 
         <div class="donate-thanks">
           <p>${t('donate.thanks')}</p>
         </div>
       </div>
-    </div>
-  `
+    </div>`
+}
+
+function renderLinks(container, links) {
+  if (links.paypal) {
+    container.querySelector('#donate-action-paypal').innerHTML =
+      `<a href="${esc(links.paypal)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary donate-btn">PayPal öffnen</a>`
+  }
+
+  if (links.bitcoin) {
+    const addr = esc(links.bitcoin)
+    container.querySelector('#donate-action-bitcoin').innerHTML =
+      `<div class="donate-btc-wrap">
+        <code class="donate-btc-addr">${addr}</code>
+        <button class="btn btn-sm donate-copy-btn" data-copy="${addr}">Kopieren</button>
+      </div>`
+    container.querySelector('.donate-copy-btn').addEventListener('click', e => {
+      navigator.clipboard.writeText(e.currentTarget.dataset.copy).then(() => {
+        e.currentTarget.textContent = '✓ Kopiert'
+        setTimeout(() => { e.currentTarget.textContent = 'Kopieren' }, 2000)
+      })
+    })
+  }
+
+  if (links.bmac) {
+    container.querySelector('#donate-action-bmac').innerHTML =
+      `<a href="${esc(links.bmac)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary donate-btn">Buy Me a Coffee ☕</a>`
+  }
 }
 
 export function html() {
   return buildHtml()
 }
 
-export function init() {
-  // Re-render handled globally by main.js navigateTo on at:locale-change
+export function init(container) {
+  fetch('/api/settings/donate')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(links => renderLinks(container, links))
+    .catch(() => {})
 }

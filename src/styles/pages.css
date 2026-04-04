@@ -259,6 +259,29 @@
   color: var(--text-secondary);
 }
 
+.donate-card-body { flex: 1; }
+.donate-card-desc { font-size: 13px; color: var(--text-secondary); margin: 0 0 8px; }
+.donate-card-action { margin-top: 6px; }
+.donate-btn { display: inline-block; }
+
+.donate-btc-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.donate-btc-addr {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm, 4px);
+  padding: 3px 8px;
+  word-break: break-all;
+  color: var(--text-primary);
+}
+
 /* Spinner */
 .spinner {
   width: 20px;
