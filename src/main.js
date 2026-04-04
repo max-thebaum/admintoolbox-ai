@@ -84,6 +84,9 @@ import './tools/ssltls/ssltls.css'
 import * as jwtdecoder  from './tools/jwtdecoder/jwtdecoder.js'
 import './tools/jwtdecoder/jwtdecoder.css'
 
+import * as converter   from './tools/converter/converter.js'
+import './tools/converter/converter.css'
+
 // Pages
 import * as donate      from './pages/donate.js'
 import * as home        from './pages/home.js'
@@ -118,6 +121,7 @@ register('bashgen',     { html: bashgen.html,     init: bashgen.init })
 register('speedtest',   { html: speedtest.html,   init: speedtest.init })
 register('ssltls',      { html: ssltls.html,      init: ssltls.init })
 register('jwtdecoder',  { html: jwtdecoder.html,  init: jwtdecoder.init })
+register('converter',   { html: converter.html,   init: converter.init })
 register('donate',      { html: donate.html,      init: donate.init })
 register('admin',       { html: admin.html,       init: admin.init })
 register('impressum',   { html: impressum.html,   init: impressum.init })

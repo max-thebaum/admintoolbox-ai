@@ -10,7 +10,7 @@ export const TOOL_REGISTRY_HASHES = [
   'portcheck', 'dnsprop', 'speedtest', 'ssltls',
   'certdecoder',
   'jsonformat', 'base64', 'timestamp', 'uuidgen', 'regextest', 'textdiff', 'csvclean',
-  'bashgen', 'jwtdecoder',
+  'bashgen', 'jwtdecoder', 'converter',
 ]
 
 export function getToolByHash(hash) {

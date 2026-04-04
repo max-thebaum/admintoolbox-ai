@@ -21,6 +21,7 @@ import logRouter          from './routes/log.js'
 import adminStatsRouter   from './routes/adminStats.js'
 import whoisRouter        from './routes/whois.js'
 import ssltlsRouter       from './routes/ssltls.js'
+import converterRouter    from './routes/converter.js'
 import { logRequest }     from './lib/logger.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -95,6 +96,7 @@ app.use('/api/log',         logRouter)
 app.use('/api/admin',       adminStatsRouter)
 app.use('/api/whois',       whoisRouter)
 app.use('/api/ssltls',      ssltlsRouter)
+app.use('/api/converter',   converterRouter)
 
 // ---- Serve static dist in production ----
 if (existsSync(DIST)) {

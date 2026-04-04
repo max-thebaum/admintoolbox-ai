@@ -68,6 +68,8 @@ export default {
   'tool.ssltls.desc':       'Inspecter le certificat TLS d\'un serveur : validité, émetteur, cipher, SANs et chaîne',
   'tool.jwtdecoder.label':  'Décodeur JWT',
   'tool.jwtdecoder.desc':   'Décoder les JSON Web Tokens — afficher l\'en-tête, la charge utile et les claims avec les dates lisibles',
+  'tool.converter.label':   'Convertisseur de fichiers',
+  'tool.converter.desc':    'Convertir et redimensionner des images (JPEG/PNG/WebP) et convertir des fichiers audio (MP3/WAV/OGG/FLAC)',
 
   // Home page
   'home.title':           'AdminToolbox',

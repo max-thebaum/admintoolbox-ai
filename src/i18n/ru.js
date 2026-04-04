@@ -68,6 +68,8 @@ export default {
   'tool.ssltls.desc':       'Проверять TLS-сертификат сервера: срок действия, издатель, шифр, SAN и цепочка сертификатов',
   'tool.jwtdecoder.label':  'JWT Decoder',
   'tool.jwtdecoder.desc':   'Декодировать JSON Web Token — показывать заголовок, полезную нагрузку и claims с читаемыми датами',
+  'tool.converter.label':   'Конвертер файлов',
+  'tool.converter.desc':    'Конвертировать и масштабировать изображения (JPEG/PNG/WebP) и преобразовывать аудиофайлы (MP3/WAV/OGG/FLAC)',
 
   // Home page
   'home.title':           'AdminToolbox',
