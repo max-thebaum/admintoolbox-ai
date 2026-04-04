@@ -62,6 +62,8 @@ export default {
   'tool.csvclean.desc':     'CSV-Dateien bereinigen, Spalten transformieren und auf Fehler validieren',
   'tool.bashgen.label':     'Bootstrap Generator',
   'tool.bashgen.desc':      'Individuelles Ubuntu-Server-Einrichtungsskript im Wizard-Modus generieren und herunterladen',
+  'tool.speedtest.label':   'Speedtest',
+  'tool.speedtest.desc':    'Download, Upload und Latenz zum Server messen — mit Echtzeit-Graph und Troubleshooting-Metriken',
 
   // Home page
   'home.title':           'AdminToolbox',

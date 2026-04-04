@@ -15,6 +15,7 @@ import settingsRouter   from './routes/settings.js'
 import portcheckRouter    from './routes/portcheck.js'
 import dnspropRouter      from './routes/dnsprop.js'
 import scriptstoreRouter  from './routes/scriptstore.js'
+import speedtestRouter    from './routes/speedtest.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const PORT      = process.env.PORT || 3001
@@ -65,6 +66,7 @@ app.use('/api/portcheck',   portcheckRouter)
 app.use('/api/dnsprop',     dnspropRouter)
 app.use('/api/scriptstore', scriptstoreRouter)
 app.use('/script',          scriptstoreRouter)   // serves GET /script/:token.sh
+app.use('/api/speedtest',   speedtestRouter)
 
 // ---- Serve static dist in production ----
 if (existsSync(DIST)) {

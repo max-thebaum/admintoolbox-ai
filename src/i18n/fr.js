@@ -62,6 +62,8 @@ export default {
   'tool.csvclean.desc':     'Nettoyer les fichiers CSV, transformer les colonnes et valider les erreurs',
   'tool.bashgen.label':     'Générateur Bootstrap',
   'tool.bashgen.desc':      'Générer un script de configuration Ubuntu personnalisé via un assistant guidé',
+  'tool.speedtest.label':   'Test de débit',
+  'tool.speedtest.desc':    'Mesurer le téléchargement, l\'envoi et la latence vers le serveur — avec graphique en temps réel',
 
   // Home page
   'home.title':           'AdminToolbox',

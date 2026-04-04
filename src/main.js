@@ -75,6 +75,9 @@ import './tools/csvclean/csvclean.css'
 import * as bashgen     from './tools/bashgen/bashgen.js'
 import './tools/bashgen/bashgen.css'
 
+import * as speedtest   from './tools/speedtest/speedtest.js'
+import './tools/speedtest/speedtest.css'
+
 // Pages
 import * as donate      from './pages/donate.js'
 import * as home        from './pages/home.js'
@@ -106,6 +109,7 @@ register('certdecoder', { html: certdecoder.html, init: certdecoder.init })
 register('textdiff',    { html: textdiff.html,    init: textdiff.init })
 register('csvclean',    { html: csvclean.html,    init: csvclean.init })
 register('bashgen',     { html: bashgen.html,     init: bashgen.init })
+register('speedtest',   { html: speedtest.html,   init: speedtest.init })
 register('donate',      { html: donate.html,      init: donate.init })
 register('admin',       { html: admin.html,       init: admin.init })
 register('impressum',   { html: impressum.html,   init: impressum.init })
