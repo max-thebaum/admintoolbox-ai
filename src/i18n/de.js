@@ -64,8 +64,6 @@ export default {
   'tool.bashgen.desc':      'Individuelles Ubuntu-Server-Einrichtungsskript im Wizard-Modus generieren und herunterladen',
   'tool.speedtest.label':   'Speedtest',
   'tool.speedtest.desc':    'Download, Upload und Latenz zum Server messen — mit Echtzeit-Graph und Troubleshooting-Metriken',
-  'tool.traceroute.label':  'Traceroute',
-  'tool.traceroute.desc':   'Route zu einem Ziel-Host live verfolgen — Hops, Latenzen und Timeouts in Echtzeit anzeigen',
   'tool.ssltls.label':      'SSL/TLS Checker',
   'tool.ssltls.desc':       'TLS-Zertifikat eines Servers prüfen: Gültigkeit, Aussteller, Cipher, SANs und Zertifikatskette',
   'tool.jwtdecoder.label':  'JWT Decoder',

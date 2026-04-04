@@ -26,8 +26,6 @@ RUN npm ci --omit=dev
 COPY server/ ./server/
 COPY --from=builder /app/dist ./dist
 
-RUN apk add --no-cache traceroute
-
 EXPOSE 3001
 ENV NODE_ENV=production
 
