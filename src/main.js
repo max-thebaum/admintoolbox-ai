@@ -75,9 +75,6 @@ import './tools/csvclean/csvclean.css'
 import * as bashgen     from './tools/bashgen/bashgen.js'
 import './tools/bashgen/bashgen.css'
 
-import * as speedtest   from './tools/speedtest/speedtest.js'
-import './tools/speedtest/speedtest.css'
-
 import * as ssltls      from './tools/ssltls/ssltls.js'
 import './tools/ssltls/ssltls.css'
 
@@ -118,7 +115,6 @@ register('certdecoder', { html: certdecoder.html, init: certdecoder.init })
 register('textdiff',    { html: textdiff.html,    init: textdiff.init })
 register('csvclean',    { html: csvclean.html,    init: csvclean.init })
 register('bashgen',     { html: bashgen.html,     init: bashgen.init })
-register('speedtest',   { html: speedtest.html,   init: speedtest.init })
 register('ssltls',      { html: ssltls.html,      init: ssltls.init })
 register('jwtdecoder',  { html: jwtdecoder.html,  init: jwtdecoder.init })
 register('converter',   { html: converter.html,   init: converter.init })

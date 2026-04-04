@@ -16,7 +16,6 @@ import settingsRouter   from './routes/settings.js'
 import portcheckRouter    from './routes/portcheck.js'
 import dnspropRouter      from './routes/dnsprop.js'
 import scriptstoreRouter  from './routes/scriptstore.js'
-import speedtestRouter    from './routes/speedtest.js'
 import logRouter          from './routes/log.js'
 import adminStatsRouter   from './routes/adminStats.js'
 import whoisRouter        from './routes/whois.js'
@@ -91,7 +90,6 @@ app.use('/api/portcheck',   portcheckRouter)
 app.use('/api/dnsprop',     dnspropRouter)
 app.use('/api/scriptstore', scriptstoreRouter)
 app.use('/script',          scriptstoreRouter)   // serves GET /script/:token.sh
-app.use('/api/speedtest',   speedtestRouter)
 app.use('/api/log',         logRouter)
 app.use('/api/admin',       adminStatsRouter)
 app.use('/api/whois',       whoisRouter)

@@ -7,7 +7,7 @@ export const TOOL_REGISTRY_HASHES = [
   'passgen', 'hashgen',
   'csrgen', 'certgen', 'certchain',
   'intune',
-  'portcheck', 'dnsprop', 'speedtest', 'ssltls',
+  'portcheck', 'dnsprop', 'ssltls',
   'certdecoder',
   'jsonformat', 'base64', 'timestamp', 'uuidgen', 'regextest', 'textdiff', 'csvclean',
   'bashgen', 'jwtdecoder', 'converter',

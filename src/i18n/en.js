@@ -62,14 +62,12 @@ export default {
   'tool.csvclean.desc':     'Clean CSV files, transform columns and validate for errors',
   'tool.bashgen.label':     'Bootstrap Generator',
   'tool.bashgen.desc':      'Generate a custom Ubuntu server setup script using a guided wizard',
-  'tool.speedtest.label':   'Speed Test',
-  'tool.speedtest.desc':    'Measure download, upload and latency to the server — with real-time graph and troubleshooting metrics',
   'tool.ssltls.label':      'SSL/TLS Checker',
   'tool.ssltls.desc':       'Inspect a server\'s TLS certificate: validity, issuer, cipher, SANs and certificate chain',
   'tool.jwtdecoder.label':  'JWT Decoder',
   'tool.jwtdecoder.desc':   'Decode JSON Web Tokens — view header, payload and claims with human-readable timestamps',
   'tool.converter.label':   'File Converter',
-  'tool.converter.desc':    'Convert and resize images (JPEG/PNG/WebP) and convert audio files (MP3/WAV/OGG/FLAC)',
+  'tool.converter.desc':    'Convert, resize and compress images — JPEG, PNG and WebP directly in the browser',
 
   // Home page
   'home.title':           'AdminToolbox',
