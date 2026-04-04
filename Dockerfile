@@ -9,7 +9,9 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+# NODE_ENV=development ensures devDependencies (vite) are installed
+# Coolify injects ARG NODE_ENV=production which would skip them otherwise
+RUN NODE_ENV=development npm ci
 
 COPY . .
 RUN npm run build
