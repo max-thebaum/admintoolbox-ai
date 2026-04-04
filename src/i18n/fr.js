@@ -66,6 +66,8 @@ export default {
   'tool.ssltls.desc':       'Inspecter le certificat TLS d\'un serveur : validité, émetteur, cipher, SANs et chaîne',
   'tool.jwtdecoder.label':  'Décodeur JWT',
   'tool.jwtdecoder.desc':   'Décoder les JSON Web Tokens — afficher l\'en-tête, la charge utile et les claims avec les dates lisibles',
+  'tool.mailheader.label':  'Analyseur d\'en-têtes mail',
+  'tool.mailheader.desc':   'Analyser les en-têtes d\'e-mail — chemin de routage, SPF/DKIM/DMARC, score spam et tous les champs',
   'tool.converter.label':   'Convertisseur de fichiers',
   'tool.converter.desc':    'Convertir, redimensionner et compresser des images — JPEG, PNG et WebP directement dans le navigateur',
 

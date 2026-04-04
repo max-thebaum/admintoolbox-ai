@@ -66,6 +66,8 @@ export default {
   'tool.ssltls.desc':       'Проверять TLS-сертификат сервера: срок действия, издатель, шифр, SAN и цепочка сертификатов',
   'tool.jwtdecoder.label':  'JWT Decoder',
   'tool.jwtdecoder.desc':   'Декодировать JSON Web Token — показывать заголовок, полезную нагрузку и claims с читаемыми датами',
+  'tool.mailheader.label':  'Анализатор заголовков почты',
+  'tool.mailheader.desc':   'Анализировать заголовки e-mail — маршрут, SPF/DKIM/DMARC, спам-оценка и все поля',
   'tool.converter.label':   'Конвертер файлов',
   'tool.converter.desc':    'Конвертировать, масштабировать и сжимать изображения — JPEG, PNG и WebP прямо в браузере',
 

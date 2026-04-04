@@ -66,6 +66,8 @@ export default {
   'tool.ssltls.desc':       'TLS-Zertifikat eines Servers prüfen: Gültigkeit, Aussteller, Cipher, SANs und Zertifikatskette',
   'tool.jwtdecoder.label':  'JWT Decoder',
   'tool.jwtdecoder.desc':   'JSON Web Token dekodieren — Header, Payload und Claims mit lesbaren Zeitangaben anzeigen',
+  'tool.mailheader.label':  'Mail Header Analyzer',
+  'tool.mailheader.desc':   'E-Mail-Header analysieren — Routing-Pfad, SPF/DKIM/DMARC, Spam-Score und alle Header-Felder',
   'tool.converter.label':   'Datei-Konverter',
   'tool.converter.desc':    'Bilder konvertieren, skalieren und komprimieren — JPEG, PNG und WebP direkt im Browser',
 
