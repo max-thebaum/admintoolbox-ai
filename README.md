@@ -584,8 +584,3 @@ admintoolbox/
 └── vite.config.js              # Vite-Konfiguration
 ```
 
----
-
-## Lizenz
-
-Dieses Projekt ist nicht open source lizenziert. Alle Rechte vorbehalten.
