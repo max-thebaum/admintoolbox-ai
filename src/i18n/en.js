@@ -4,7 +4,7 @@ export default {
 
   // Footer
   'footer.tagline':       'Professional network tools\nfor system administrators.',
-  'footer.motto':         'Idea: Human 💡 — Code: AI 🤖 — Liability: none',
+  'footer.motto':         'Idea: Human 💡 — Code: AI 🤖',
   'footer.nav.home':      'Home',
 
   // Navigation categories

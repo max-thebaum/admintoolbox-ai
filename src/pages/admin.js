@@ -16,102 +16,6 @@ function esc(s) {
   return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
 }
 
-// ---- Stats rendering ----
-function renderStats(container, data) {
-  const { summary, hourly, topTools, topIps, recent } = data
-
-  // Summary cards
-  container.querySelector('#sc-today').textContent  = summary.today.total.toLocaleString()
-  container.querySelector('#sc-week').textContent   = summary.week.total.toLocaleString()
-  container.querySelector('#sc-errors').textContent = summary.errorRate + '%'
-  container.querySelector('#sc-ips').textContent    = summary.uniqueIps.toLocaleString()
-
-  // Hourly bar chart
-  renderHourlyChart(container.querySelector('#stats-chart'), hourly)
-
-  // Top tools
-  const maxCount = topTools.length ? topTools[0].count : 1
-  container.querySelector('#stats-top-tools').innerHTML = topTools.length
-    ? topTools.map(t => `
-        <div class="stats-tool-row">
-          <span class="stats-tool-name">${esc(t.path)}</span>
-          <div class="stats-tool-bar-wrap">
-            <div class="stats-tool-bar" style="width:${Math.round(t.count / maxCount * 100)}%"></div>
-          </div>
-          <span class="stats-tool-count">${t.count}</span>
-        </div>`).join('')
-    : '<p style="color:var(--text-muted);font-size:13px">Noch keine Daten</p>'
-
-  // Recent feed
-  container.querySelector('#stats-feed').innerHTML = recent.length
-    ? recent.map(r => {
-        const statusClass = r.status >= 400 ? 'stats-status--err' : r.status >= 200 ? 'stats-status--ok' : ''
-        const status = r.status ? `<span class="stats-status ${statusClass}">${r.status}</span>` : ''
-        const dur    = r.duration_ms != null ? `<span class="stats-dur">${r.duration_ms}ms</span>` : ''
-        const method = r.method ? `<span class="stats-method">${esc(r.method)}</span>` : ''
-        return `<div class="stats-feed-row">
-          <span class="stats-feed-ts">${esc(r.ts)}</span>
-          <span class="stats-feed-ip">${esc(r.ip_anon)}</span>
-          <span class="stats-feed-type ${r.type === 'pageview' ? 'stats-type--pv' : 'stats-type--api'}">${r.type === 'pageview' ? 'view' : 'api'}</span>
-          ${method}
-          <span class="stats-feed-path">${esc(r.path)}</span>
-          ${status}${dur}
-        </div>`
-      }).join('')
-    : '<p style="color:var(--text-muted);font-size:13px">Noch keine Aktivität</p>'
-}
-
-function renderHourlyChart(svg, hourly) {
-  if (!svg) return
-  const W = 520, H = 100
-  const ML = 30, MR = 8, MT = 8, MB = 20
-  const CW = W - ML - MR
-  const CH = H - MT - MB
-  const BARS = 24
-
-  // Build hour→count map for last 24 hours
-  const now   = new Date()
-  const slots = []
-  for (let i = BARS - 1; i >= 0; i--) {
-    const d = new Date(now)
-    d.setMinutes(0, 0, 0)
-    d.setHours(d.getHours() - i)
-    slots.push({ label: d.getHours().toString().padStart(2, '0') + ':00', count: 0 })
-  }
-  hourly.forEach(h => {
-    const hh = h.hour + ':00'
-    const slot = slots.find(s => s.label === hh)
-    if (slot) slot.count = h.count
-  })
-
-  const maxVal = Math.max(...slots.map(s => s.count), 1)
-  const barW   = (CW / BARS) * 0.7
-  const gap    = CW / BARS
-
-  let s = ''
-
-  // Y gridline at max
-  s += `<line x1="${ML}" y1="${MT}" x2="${W - MR}" y2="${MT}" stroke="var(--border-subtle)" stroke-width="1"/>`
-  s += `<text x="${ML - 4}" y="${MT + 4}" text-anchor="end" fill="var(--text-muted)" font-size="9" font-family="monospace">${maxVal}</text>`
-  s += `<line x1="${ML}" y1="${MT + CH}" x2="${W - MR}" y2="${MT + CH}" stroke="var(--border)" stroke-width="1"/>`
-  s += `<text x="${ML - 4}" y="${MT + CH + 4}" text-anchor="end" fill="var(--text-muted)" font-size="9" font-family="monospace">0</text>`
-
-  // Bars + X labels (every 4h)
-  slots.forEach((slot, i) => {
-    const x = ML + i * gap + (gap - barW) / 2
-    const barH = slot.count > 0 ? Math.max(2, Math.round((slot.count / maxVal) * CH)) : 0
-    const y = MT + CH - barH
-    if (barH > 0) {
-      s += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${barH}" rx="2" fill="var(--accent)" opacity="0.8"/>`
-    }
-    if (i % 4 === 0) {
-      s += `<text x="${(x + barW / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-family="monospace">${slot.label.slice(0,5)}</text>`
-    }
-  })
-
-  svg.innerHTML = s
-}
-
 // ---- Login ----
 function loginHtml() {
   return `
@@ -157,51 +61,12 @@ function dashboardHtml() {
           </svg>
           Admin — Einstellungen
         </h2>
-        <p>Navigation &amp; Statistiken verwalten</p>
+        <p>Navigation verwalten</p>
       </div>
       <div class="tool-body">
 
         <div class="admin-toolbar">
           <button class="btn btn-secondary" id="admin-logout-btn">Abmelden</button>
-        </div>
-
-        <!-- Statistik-Dashboard -->
-        <div class="admin-section">
-          <div class="admin-section-header">
-            <h3 class="admin-section-title">Statistiken</h3>
-            <div style="display:flex;gap:8px;align-items:center">
-              <span class="stats-refresh-label" id="stats-refresh-label" style="font-size:0.75rem;color:var(--text-muted)"></span>
-              <button class="btn btn-sm btn-secondary" id="stats-refresh-btn">Aktualisieren</button>
-            </div>
-          </div>
-
-          <!-- Summary cards -->
-          <div class="stats-cards" id="stats-cards">
-            <div class="stats-card"><div class="stats-card-val" id="sc-today">—</div><div class="stats-card-label">Heute</div></div>
-            <div class="stats-card"><div class="stats-card-val" id="sc-week">—</div><div class="stats-card-label">7 Tage</div></div>
-            <div class="stats-card"><div class="stats-card-val" id="sc-errors">—</div><div class="stats-card-label">Fehlerrate</div></div>
-            <div class="stats-card"><div class="stats-card-val" id="sc-ips">—</div><div class="stats-card-label">Unique IPs</div></div>
-          </div>
-
-          <!-- Hourly bar chart -->
-          <div class="stats-chart-wrap">
-            <div class="stats-chart-title">Anfragen / Stunde (letzte 24h)</div>
-            <svg id="stats-chart" viewBox="0 0 520 100" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block"></svg>
-          </div>
-
-          <!-- Tools + Recent side by side -->
-          <div class="stats-bottom">
-            <div class="stats-tools">
-              <div class="stats-sub-title">Top Tools (7 Tage)</div>
-              <div id="stats-top-tools" class="stats-tool-list"></div>
-            </div>
-            <div class="stats-recent">
-              <div class="stats-sub-title">Letzte Aktivität</div>
-              <div id="stats-feed" class="stats-feed"></div>
-            </div>
-          </div>
-
-          <div id="stats-err" class="input-error-msg"></div>
         </div>
 
         <!-- Navigation verwalten -->
@@ -396,45 +261,6 @@ function initDashboard(container) {
     clearToken()
     container.innerHTML = loginHtml()
     initLogin(container)
-  })
-
-  // ---- Statistics dashboard ----
-  const statsRefreshBtn   = container.querySelector('#stats-refresh-btn')
-  const statsRefreshLabel = container.querySelector('#stats-refresh-label')
-  const statsErr          = container.querySelector('#stats-err')
-  let statsTimer          = null
-  let statsLoading        = false
-
-  async function loadStats() {
-    if (statsLoading) return
-    statsLoading = true
-    statsRefreshBtn.disabled = true
-    statsErr.textContent = ''
-    try {
-      const res  = await fetch('/api/admin/stats', { headers: authHeaders() })
-      if (!res.ok) { const d = await res.json(); throw new Error(d.error || `HTTP ${res.status}`) }
-      const data = await res.json()
-      renderStats(container, data)
-      const now = new Date()
-      statsRefreshLabel.textContent = `Aktualisiert: ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`
-    } catch (e) {
-      statsErr.textContent = 'Statistiken konnten nicht geladen werden: ' + e.message
-    } finally {
-      statsLoading = false
-      statsRefreshBtn.disabled = false
-    }
-  }
-
-  statsRefreshBtn.addEventListener('click', loadStats)
-
-  // Auto-refresh every 30s, stop when leaving admin page
-  loadStats()
-  statsTimer = setInterval(loadStats, 30_000)
-  window.addEventListener('at:navigate', function stopTimer(e) {
-    if (e.detail.hash !== 'admin') {
-      clearInterval(statsTimer)
-      window.removeEventListener('at:navigate', stopTimer)
-    }
   })
 
   loadNavConfig()

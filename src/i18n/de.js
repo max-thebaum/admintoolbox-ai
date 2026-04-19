@@ -4,7 +4,7 @@ export default {
 
   // Footer
   'footer.tagline':       'Professionelle Netzwerk-Tools\nfür Systemadministratoren.',
-  'footer.motto':         'Idee: Mensch 💡 — Code: KI 🤖 — Haftung: keine',
+  'footer.motto':         'Idee: Mensch 💡 — Code: KI 🤖',
   'footer.nav.home':      'Home',
 
   // Navigation categories
