@@ -27,6 +27,8 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       APP_URL: https://${DOMAIN}
       NODE_ENV: production
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
     depends_on:
       db:
         condition: service_healthy

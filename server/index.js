@@ -8,7 +8,7 @@ import { existsSync } from 'fs'
 // Initialize DB pool + run schema migrations
 import './lib/db.js'
 
-import { ensureSchema } from './lib/schema.js'
+import { ensureSchema, ensureAdminFromEnv } from './lib/schema.js'
 
 import authRouter       from './routes/auth.js'
 import dnsRouter        from './routes/dns.js'
@@ -102,11 +102,11 @@ app.use((err, req, res, _next) => {
 
 // ---- Start ----
 ensureSchema()
+  .then(() => ensureAdminFromEnv())
   .then(() => {
     app.listen(PORT, () => {
       console.log(`[AdminToolbox API] läuft auf http://localhost:${PORT}`)
     })
-
   })
   .catch(err => {
     console.error('[startup] Schema-Migration fehlgeschlagen:', err.message)

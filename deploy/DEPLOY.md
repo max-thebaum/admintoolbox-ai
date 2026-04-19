@@ -65,7 +65,11 @@ Die App ist danach unter `https://DOMAIN` erreichbar.
 
 ---
 
-## 5. Admin-Account anlegen (einmalig)
+## 5. Admin-Account
+
+Der Account wird beim ersten Start **automatisch** angelegt, wenn `ADMIN_USERNAME` und `ADMIN_PASSWORD` in der `.env` gesetzt sind — kein manueller Schritt nötig.
+
+Nach dem ersten Start kannst du beide Variablen aus der `.env` entfernen (der Account bleibt bestehen). Das Passwort lässt sich jederzeit über das interaktive Setup-Script ändern:
 
 ```bash
 docker compose exec -it app node server/setup.js
