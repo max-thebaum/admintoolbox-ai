@@ -88,7 +88,6 @@ import * as mailheader  from './tools/mailheader/mailheader.js'
 import './tools/mailheader/mailheader.css'
 
 // Pages
-import * as donate      from './pages/donate.js'
 import * as home        from './pages/home.js'
 import * as admin       from './pages/admin.js'
 import * as impressum   from './pages/impressum.js'
@@ -122,7 +121,6 @@ register('ssltls',      { html: ssltls.html,      init: ssltls.init })
 register('jwtdecoder',  { html: jwtdecoder.html,  init: jwtdecoder.init })
 register('converter',   { html: converter.html,   init: converter.init })
 register('mailheader',  { html: mailheader.html,  init: mailheader.init })
-register('donate',      { html: donate.html,      init: donate.init })
 register('admin',       { html: admin.html,       init: admin.init })
 register('impressum',   { html: impressum.html,   init: impressum.init })
 register('datenschutz', { html: datenschutz.html, init: datenschutz.init })

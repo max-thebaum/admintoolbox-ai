@@ -1,13 +1,11 @@
 export default {
   // Nav / global
-  'nav.donate':           'Spenden',
   'nav.menuOpen':         'Menü öffnen',
 
   // Footer
   'footer.tagline':       'Professionelle Netzwerk-Tools\nfür Systemadministratoren.',
   'footer.motto':         'Idee: Mensch 💡 — Code: KI 🤖 — Haftung: keine',
   'footer.nav.home':      'Home',
-  'footer.nav.donate':    'Projekt unterstützen',
 
   // Navigation categories
   'cat.netzwerk':   'Netzwerk',
@@ -86,23 +84,6 @@ export default {
   'home.cat.developer':   'JSON Formatter, Base64, Timestamp Converter, UUID Generator, Regex Tester, Text Diff und CSV Cleaner.',
   'home.cat.scripts':     'Ubuntu-Server-Bootstrap-Skript im geführten Wizard-Modus generieren.',
   'home.updates':         'AdminToolbox wird regelmäßig um neue Tools und Funktionen erweitert — es lohnt sich, ab und zu vorbeizuschauen.',
-  'home.donate.cta':      'Wenn dir AdminToolbox hilft — ein Kaffee als Dankeschön wäre toll.',
-  'home.donate.btn':      'Projekt unterstützen',
-
-  // Donate page
-  'donate.title':         'Projekt unterstützen',
-  'donate.subtitle':      'AdminToolbox ist kostenlos und werbefrei — finanziert durch die Community',
-  'donate.intro1':        'AdminToolbox ist ein Open-Source-Projekt, das Netzwerkadministratoren im Alltag unterstützt. Alle Tools sind kostenlos, ohne Werbung und ohne Tracking nutzbar.',
-  'donate.intro2':        'Wenn dir die Tools helfen und du das Projekt unterstützen möchtest, freuen wir uns über eine kleine Spende — jeder Betrag hilft dabei, die Tools weiterzuentwickeln.',
-  'donate.sidepro':       'Dieses Projekt ist ein kleines Nebenprojekt. Wenn es dir im Alltag hilft, freue ich mich über Support — Spenden fließen direkt in den Unterhalt und die Weiterentwicklung.',
-  'donate.paypal.title':   'PayPal',
-  'donate.paypal.desc':    'Schnell und einfach per PayPal spenden',
-  'donate.bitcoin.title':  'Bitcoin',
-  'donate.bitcoin.desc':   'Krypto-Spende direkt an die Wallet-Adresse',
-  'donate.bmac.title':     'Buy Me a Coffee',
-  'donate.bmac.desc':      'Einen virtuellen Kaffee spendieren ☕',
-  'donate.badge':         'Wird eingerichtet',
-  'donate.thanks':        '❤️ Vielen Dank an alle, die das Projekt bereits unterstützen!',
 
   // Common
   'common.back':    'Zurück',

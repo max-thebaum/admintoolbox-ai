@@ -1,13 +1,11 @@
 export default {
   // Nav / global
-  'nav.donate':           'Donate',
   'nav.menuOpen':         'Open menu',
 
   // Footer
   'footer.tagline':       'Professional network tools\nfor system administrators.',
   'footer.motto':         'Idea: Human 💡 — Code: AI 🤖 — Liability: none',
   'footer.nav.home':      'Home',
-  'footer.nav.donate':    'Support the project',
 
   // Navigation categories
   'cat.netzwerk':   'Network',
@@ -86,23 +84,6 @@ export default {
   'home.cat.developer':   'JSON formatter, Base64, timestamp converter, UUID generator, regex tester, text diff and CSV cleaner.',
   'home.cat.scripts':     'Generate Ubuntu server bootstrap scripts using a guided step-by-step wizard.',
   'home.updates':         'AdminToolbox is regularly extended with new tools and features — worth checking back every now and then.',
-  'home.donate.cta':      'If AdminToolbox helps you — a coffee as a thank-you would be great.',
-  'home.donate.btn':      'Support the project',
-
-  // Donate page
-  'donate.title':         'Support the Project',
-  'donate.subtitle':      'AdminToolbox is free and ad-free — funded by the community',
-  'donate.intro1':        'AdminToolbox is an open-source project that helps network administrators in their daily work. All tools are free to use, without ads and without tracking.',
-  'donate.intro2':        'If the tools help you and you would like to support the project, we appreciate a small donation — every contribution helps to keep developing the tools.',
-  'donate.sidepro':       'This is a small side project. If it helps you in your day-to-day work, I appreciate any support — donations go directly towards hosting and further development.',
-  'donate.paypal.title':   'PayPal',
-  'donate.paypal.desc':    'Donate quickly and easily via PayPal',
-  'donate.bitcoin.title':  'Bitcoin',
-  'donate.bitcoin.desc':   'Crypto donation directly to the wallet address',
-  'donate.bmac.title':     'Buy Me a Coffee',
-  'donate.bmac.desc':      'Treat me to a virtual coffee ☕',
-  'donate.badge':         'Coming soon',
-  'donate.thanks':        '❤️ Many thanks to everyone who already supports the project!',
 
   // Common
   'common.back':    'Back',

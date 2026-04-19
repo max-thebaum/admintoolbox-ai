@@ -50,11 +50,6 @@ function buildHtml() {
           <p class="home-updates-note">${t('home.updates')}</p>
         </div>
 
-        <div class="home-donate-cta">
-          <p>${t('home.donate.cta')}</p>
-          <a href="#donate" class="btn btn-primary">${t('home.donate.btn')}</a>
-        </div>
-
       </div>
     </div>
   `

@@ -1,13 +1,11 @@
 export default {
   // Nav / global
-  'nav.donate':           'Faire un don',
   'nav.menuOpen':         'Ouvrir le menu',
 
   // Footer
   'footer.tagline':       'Outils réseau professionnels\npour les administrateurs système.',
   'footer.motto':         'Idée : Humain 💡 — Code : IA 🤖 — Garantie : aucune',
   'footer.nav.home':      'Accueil',
-  'footer.nav.donate':    'Soutenir le projet',
 
   // Navigation categories
   'cat.netzwerk':   'Réseau',
@@ -86,23 +84,6 @@ export default {
   'home.cat.developer':   'Formateur JSON, Base64, convertisseur de timestamp, générateur UUID, testeur de regex, diff de texte et nettoyeur CSV.',
   'home.cat.scripts':     'Générer des scripts d\'initialisation de serveur Ubuntu via un assistant étape par étape.',
   'home.updates':         'AdminToolbox est régulièrement enrichi de nouveaux outils et fonctionnalités — ça vaut la peine de repasser de temps en temps.',
-  'home.donate.cta':      'Si AdminToolbox vous aide — un café en guise de remerciement serait super.',
-  'home.donate.btn':      'Soutenir le projet',
-
-  // Donate page
-  'donate.title':         'Soutenir le projet',
-  'donate.subtitle':      'AdminToolbox est gratuit et sans publicité — financé par la communauté',
-  'donate.intro1':        'AdminToolbox est un projet open-source qui aide les administrateurs réseau au quotidien. Tous les outils sont utilisables gratuitement, sans publicité et sans tracking.',
-  'donate.intro2':        'Si les outils vous aident et que vous souhaitez soutenir le projet, nous apprécions un petit don — chaque contribution aide à continuer le développement des outils.',
-  'donate.sidepro':       'C\'est un petit projet parallèle. S\'il vous aide au quotidien, je suis reconnaissant pour tout soutien — les dons vont directement à l\'hébergement et au développement.',
-  'donate.paypal.title':   'PayPal',
-  'donate.paypal.desc':    'Faire un don rapidement via PayPal',
-  'donate.bitcoin.title':  'Bitcoin',
-  'donate.bitcoin.desc':   'Don en crypto directement à l\'adresse du portefeuille',
-  'donate.bmac.title':     'Buy Me a Coffee',
-  'donate.bmac.desc':      'Offrez-moi un café virtuel ☕',
-  'donate.badge':         'Bientôt disponible',
-  'donate.thanks':        '❤️ Merci à tous ceux qui soutiennent déjà le projet !',
 
   // Common
   'common.back':    'Retour',
